@@ -59,7 +59,7 @@ Del 1 består av:
 * Skapar en funktion för att beräkna power vid olika hypotetiska skillnader 
 * Funktionen beräknar styrka utifrån en kombination av numpy.random.normal() och scipy.stats.ttest_ind() i en for-loop. 
 
-## Installation
+## Installation och hur man kör
 
 Python version 3.13.7 
 
@@ -67,25 +67,19 @@ Python version 3.13.7
 
 git clone https://github.com/josefinoleryd/Individuell-uppgift-Health_Study.git
 
-2. Installera nödvändiga paket: 
+2. Byt till branch del1 
 
-pip install -r requirements.twt
+git checkout del1
 
-## Hur man kör 
+3. Installera nödvändiga paket: 
 
-När du har installerat alla paket enligt installationsavsnittet:
+pip install -r requirements.txt
 
-1. Öppna projektet i VS Code 
+4. Öppna rapport.ipynb 
 
-2. Byt till branch del1
+5. Klicka på "Run All"
 
-git checkout del1 
-
-3. Öppna rapport.ipynb 
-
-4. Klicka på "Run All"
-
-5. Bob's your uncle! 
+6. Bob's your uncle! 
 
 ## Teknikstack
 
