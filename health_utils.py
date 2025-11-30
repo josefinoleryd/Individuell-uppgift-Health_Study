@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
-import scipy as sc
 
 def load_and_prep_data(filepath):
     """
