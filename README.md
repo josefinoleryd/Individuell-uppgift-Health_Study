@@ -12,52 +12,52 @@ Mitt uppdrag är att undersöka relationen mellan blodtryck och rökning.
 
 Uppgiften är indelad i två delar: Del 1 Grundläggande analys och statistik och Del 2 Fördjupning och pipeline. 
 
-VIKTIGT: ALLT ARBETE LIGGER I BRANCH del1, inte i main.
+VIKTIGT: ALLT ARBETE MED DEL 1 LIGGER I BRANCH del1 och ALLT ARBETE MED DEL 2 LIGGER I BRANCH del2. 
 
-Del 1 består av:
+Det som är exakt likadant som i Del 1 är märkt EXAKT LIKADANT SOM I DEL 1
 
-* Dataförberedelse och "Rengöring"
-* Beskrivande analys
-* Simulering kopplad till caset
-* Beräkning av konfidensintervall
-* Hypotesprövning: "Rökare har högre medel-blodtryck än icke-rökare"
-* Statistical Power
+* i kodblock: <span style="color: green;"># EXAKT LIKADANT SOM I DEL 1:</span>
+* i markdown: <mark>EXAKT LIKADANT SOM I DEL 1:</mark>
 
-## Innehåll i Notebook:en 
+Denna README gäller främst Del 2
 
-### Dataförberedelse och "Rengöring" 
+Del 2 består, utöver tidigare arbete med Del 1, av:
 
-* Importerar de bibliotek som behövs 
-* Läser in datasetet health_study_dataset.csv 
-* Undersöker om datasetet saknar värden, har dubbletter, vilka dtypes det kommer med 
-* Ändrar dtypes 
+* Funktioner och moduler
+* Fördjupad analys (linjär regression)
+* Förbättringsförslag och vidare arbete 
 
-### Beskrivande analys
+## Funktioner
 
-* Sammanställer nyckeltal (min, max, medel, median för ålder, längd, vikt, blodtryck och kolesterol)
-* Skapar diverse relevanta plottar (histogram, boxplot, stapeldiagram och spridningsdiagram) med både matplotlib och seaborn 
+### Modulen health_utils.py
 
-### Simulering kopplad till caset
+Här ligger funktionen load_and_prep_data som, mycket riktigt, läser in datan från en csv-fil och städar den 
 
-* Slumpar fram 1000 personer med samma risk för sjukdom som deltagarna i studien 
-* Detta görs med numpy.random.choice()
+Här ligger också klassen HealthAnalyzer som har följande metoder: 
 
-### Beräkning av konfidensintervall
+* get_stats: beräknar min, max, medel och median för valfria kolumner 
+* plot_ hist: ritar ett histogram över valfri kolumn
+* plot_bar: ritar ett stapeldiagram över valfri kolumn 
+    * kan hantera namnbyte (från 1 och 0 till Yes och No) och procent istället för antal
+* calc_confidence_interval: beräknar konfidensintervall med Bootstrap-metoden för given kolumn (endast numerisk)
+    * antal simuleringar och 95% konfidensintervall är default, men kan ändras vid behov
 
-* Med normalapproximation 
-* Med bootstrap: använder bl.a. numpy.random.choice och numpy.empty för att skapa en "slumpgenerator-fabrik" 
+## Fördjupad analys (linjär regression)
 
-### Hypotesprövning 
+* En modell som ska förutsäga blodtryck med hjälp av multipel linjär regression (scikit-learn och LinearRegression)
+* En visuell presentation av modellens prognos jämfört med stuidens faktiska data
 
-* Standard t-test och Welch-style t-test
-    * Beräknar t-statistik och p-värde med scipy.stats.ttest_ind()
-* Permutationstest
-    * Använder numpy.random.permutation() i "slumpgenerator-fabriken" och numpy.concatenate() för att skapa ett gemensamt urval
+## Slutsats 
 
-### Statistical Power 
+* Modellen sög
 
-* Skapar en funktion för att beräkna power vid olika hypotetiska skillnader 
-* Funktionen beräknar styrka utifrån en kombination av numpy.random.normal() och scipy.stats.ttest_ind() i en for-loop. 
+## Förbättringsförslag & Vidare Arbete
+
+* Lägga in koden för den linjära regressionen i en funktion så det går att beräkna med andra variabler än vikt och rökvanor 
+* Testa hur bra modellen är: 
+    * sklearn.model_selection.train_test_split
+    * sklearn.model_selection.cross_val_score
+* PCA (Principal Component Analysis)
 
 ## Installation och hur man kör
 
@@ -67,9 +67,9 @@ Python version 3.13.7
 
 git clone https://github.com/josefinoleryd/Individuell-uppgift-Health_Study.git
 
-2. Byt till branch del1 
+2. Byt till branch del2 
 
-git checkout del1
+git checkout del2
 
 3. Installera nödvändiga paket: 
 
@@ -79,10 +79,10 @@ pip install -r requirements.txt
 
 5. Klicka på "Run All"
 
-6. Bob's your uncle! 
+6. Easy as pie
 
 ## Teknikstack
 
-* Dataanalys och beräkningar: pandas, numpy och scipy
+* Dataanalys och beräkningar: pandas, numpy, scipy, scikit-learn
 * Visualisering: matplotlib och seaborn
 * Rapport: Jupyter Notebook
